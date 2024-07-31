@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cache_for_dummies
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+  jpa:
+    show-sql: true
+    database: postgresql
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        javax.cache:
+          provider: org.ehcache.jsr107.EhcacheCachingProvider
+          uri: ehcache.xml
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region.factory_class: jcache
